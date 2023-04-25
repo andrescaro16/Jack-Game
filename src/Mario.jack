@@ -1,0 +1,83 @@
+class Mario {
+    // Instance variables
+    field int x;
+    field int y;
+    field MarioDraws marioDraws;
+    field boolean direction;                    //true - Right
+
+    constructor Mario new (){
+        let x = 1;
+        let y = 207;
+        let direction = true;                   //standingRight
+        let marioDraws = MarioDraws.new();
+        do marioDraws.standingRight(x, y);
+        return this;
+    }
+
+
+    method void moveDown () {
+        if((y + 48) < 255){
+            // Erase
+            do marioDraws.erase(x, y);
+            // Update position
+            let y = y + 1;
+            // Draw
+            if(~direction){
+                do marioDraws.standingLeft(x, y);
+            }else{
+                do marioDraws.standingRight(x, y);
+            }
+        }
+        return;
+    }
+
+    method void moveUp () {
+        if(y > 5){
+            // Erase
+            do marioDraws.erase(x, y);
+            // Update position
+            let y = y - 1;
+            // Draw
+            if(~direction){
+                do marioDraws.jumpLeft(x, y);
+            }else{
+                do marioDraws.jumpRight(x, y);
+            }
+        }
+        return;
+    }
+
+    method void moveRigth () {
+        if(x < 30){
+            // Erase
+            do marioDraws.erase(x, y);
+            // Update position
+            let x = x + 1;
+            // Draw
+            do marioDraws.standingRight(x, y);
+            // Direction
+            let direction = true;
+        }
+        return;
+    }
+
+    method void moveLeft () {
+        if(x > 2){
+            // Erase
+            do marioDraws.erase(x, y);
+            // Update position
+            let x = x - 1;
+            // Draw
+            do marioDraws.standingLeft(x, y);
+            // Direction
+            let direction = false;
+        }
+        return;
+    }
+
+    method void dispose () {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+}

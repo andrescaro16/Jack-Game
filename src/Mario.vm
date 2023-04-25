@@ -1,0 +1,165 @@
+function Mario.new 0
+push constant 4
+call Memory.alloc 1
+pop pointer 0
+push constant 1
+pop this 0
+push constant 207
+pop this 1
+push constant 0
+not
+pop this 3
+call MarioDraws.new 0
+pop this 2
+push this 2
+push this 0
+push this 1
+call MarioDraws.standingRight 3
+pop temp 0
+push pointer 0
+return
+function Mario.moveDown 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 48
+add
+push constant 255
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+push this 0
+push this 1
+call MarioDraws.erase 3
+pop temp 0
+push this 1
+push constant 1
+add
+pop this 1
+push this 3
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+push this 0
+push this 1
+call MarioDraws.standingLeft 3
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push this 2
+push this 0
+push this 1
+call MarioDraws.standingRight 3
+pop temp 0
+label IF_END1
+label IF_FALSE0
+push constant 0
+return
+function Mario.moveUp 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 5
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+push this 0
+push this 1
+call MarioDraws.erase 3
+pop temp 0
+push this 1
+push constant 1
+sub
+pop this 1
+push this 3
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+push this 0
+push this 1
+call MarioDraws.jumpLeft 3
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push this 2
+push this 0
+push this 1
+call MarioDraws.jumpRight 3
+pop temp 0
+label IF_END1
+label IF_FALSE0
+push constant 0
+return
+function Mario.moveRigth 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 30
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+push this 0
+push this 1
+call MarioDraws.erase 3
+pop temp 0
+push this 0
+push constant 1
+add
+pop this 0
+push this 2
+push this 0
+push this 1
+call MarioDraws.standingRight 3
+pop temp 0
+push constant 0
+not
+pop this 3
+label IF_FALSE0
+push constant 0
+return
+function Mario.moveLeft 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 2
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+push this 0
+push this 1
+call MarioDraws.erase 3
+pop temp 0
+push this 0
+push constant 1
+sub
+pop this 0
+push this 2
+push this 0
+push this 1
+call MarioDraws.standingLeft 3
+pop temp 0
+push constant 0
+pop this 3
+label IF_FALSE0
+push constant 0
+return
+function Mario.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

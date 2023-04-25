@@ -1,0 +1,38 @@
+class Main {
+
+    function void main () {
+        var Mario mario;
+        var Bullet bullet;
+        var boolean exit;
+        var char key;
+
+        // Class initialisations
+        let mario = Mario.new();
+        let bullet = Bullet.new();
+
+        // Initialisation of variables
+        let key = 0;
+        let exit = false;
+
+        // To read the keyboard
+        while (~(key = 0)) { let key = Keyboard.keyPressed(); }
+        while (key = 0)    { let key = Keyboard.keyPressed(); }
+        while (~(key = 0)) { let key = Keyboard.keyPressed(); }
+
+        // Game loop
+        while(~exit){
+
+            if(key = 131){ do mario.moveUp(); }     //up
+            if(key = 133){ do mario.moveDown(); }   //down
+            if(key = 132){ do mario.moveRigth(); }  //right
+            if(key = 130){ do mario.moveLeft(); }   //left
+
+            let key = Keyboard.keyPressed();
+
+            if (key = 27){ let exit = true; }
+
+        }
+
+        return;
+    }
+}
