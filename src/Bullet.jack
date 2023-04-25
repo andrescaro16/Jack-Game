@@ -1,20 +1,56 @@
 class Bullet{
-    // Instance variables
-    field int x;
-    field int y;
-    field int size;
 
-    constructor Bullet new (){
-        let x = 10;
-        let y = 10;
-        let size = 10;
-        do draw();
-        return this;
-    }
+   // Instance variables
+   field int x;
+   field int y;
+   field int xSize;
+   field int ySize;
+   field int tick;
+   field boolean right;
+   field boolean crash;
 
-    method void draw() {
-        do Screen.setColor(true);
-        do Screen.drawCircle(x, y, 2);
-        return;
-    }
+   constructor Bullet new (int nx, int ny, boolean isRight){
+      let x = nx;
+      let y = ny;
+      let right = isRight;
+      let tick = 0;
+      return this;
+   }
+
+   method void draw() {
+      do Screen.setColor(true);
+      do Screen.drawCircle(x, y, 2);
+      return;
+   }
+
+   method void erase(){
+      do Screen.setColor(false);
+      do Screen.drawCircle(x, y, 2);
+      return;
+   }
+
+   method void tick() {
+      let tick = tick + 1; 
+      if (tick = 4) {
+         do erase();
+         let tick = 0;
+         let x = x - 1;
+         if(x < 2){
+            let x = 508;
+         }
+      }
+      return;
+   }
+
+   method void update() {
+      do tick();
+      do draw();
+      return;
+   }
+
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
 }

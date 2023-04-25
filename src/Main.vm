@@ -1,7 +1,10 @@
 function Main.main 4
 call Mario.new 0
 pop local 0
-call Bullet.new 0
+push constant 2
+push constant 10
+push constant 0
+call Bullet.new 3
 pop local 1
 push constant 0
 pop local 3
@@ -44,6 +47,9 @@ push local 2
 not
 not
 if-goto WHILE_END3
+push local 1
+call Bullet.update 1
+pop temp 0
 push local 3
 push constant 131
 eq

@@ -8,7 +8,7 @@ class Main {
 
         // Class initialisations
         let mario = Mario.new();
-        let bullet = Bullet.new();
+        let bullet = Bullet.new(2, 10, false);
 
         // Initialisation of variables
         let key = 0;
@@ -21,6 +21,8 @@ class Main {
 
         // Game loop
         while(~exit){
+
+            do bullet.update();
 
             if(key = 131){ do mario.moveUp(); }     //up
             if(key = 133){ do mario.moveDown(); }   //down
