@@ -1,4 +1,4 @@
-function Main.main 4
+function Main.main 6
 call Mario.new 0
 pop local 0
 push constant 2
@@ -6,6 +6,10 @@ push constant 10
 push constant 0
 call Bullet.new 3
 pop local 1
+push constant 0
+pop local 4
+push constant 0
+pop local 5
 push constant 0
 pop local 3
 push constant 0
@@ -47,61 +51,87 @@ push local 2
 not
 not
 if-goto WHILE_END3
-push local 1
-call Bullet.update 1
-pop temp 0
-push local 3
-push constant 131
+push local 5
+push constant 700
 eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push local 0
-call Mario.moveUp 1
+push local 1
+call Bullet.update 1
 pop temp 0
+push constant 0
+pop local 5
 label IF_FALSE0
-push local 3
-push constant 133
+push local 5
+push constant 1
+add
+pop local 5
+push local 4
+push constant 1000
 eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push local 0
-call Mario.moveDown 1
-pop temp 0
-label IF_FALSE1
 push local 3
-push constant 132
+push constant 131
 eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
 push local 0
-call Mario.moveRigth 1
+call Mario.moveUp 1
 pop temp 0
 label IF_FALSE2
 push local 3
-push constant 130
+push constant 133
 eq
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
 push local 0
-call Mario.moveLeft 1
+call Mario.moveDown 1
 pop temp 0
 label IF_FALSE3
+push local 3
+push constant 132
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 0
+call Mario.moveRigth 1
+pop temp 0
+label IF_FALSE4
+push local 3
+push constant 130
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 0
+call Mario.moveLeft 1
+pop temp 0
+label IF_FALSE5
 call Keyboard.keyPressed 0
 pop local 3
 push local 3
 push constant 27
 eq
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
 push constant 0
 not
 pop local 2
-label IF_FALSE4
+label IF_FALSE6
+push constant 0
+pop local 4
+label IF_FALSE1
+push local 4
+push constant 1
+add
+pop local 4
 goto WHILE_EXP3
 label WHILE_END3
 push constant 0

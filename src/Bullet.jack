@@ -31,7 +31,7 @@ class Bullet{
 
    method void tick() {
       let tick = tick + 1; 
-      if (tick = 4) {
+      if (tick = 1) {
          do erase();
          let tick = 0;
          let x = x - 1;

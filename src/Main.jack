@@ -5,10 +5,14 @@ class Main {
         var Bullet bullet;
         var boolean exit;
         var char key;
+        var int counterCharacters;
+        var int counterBullets;
 
         // Class initialisations
         let mario = Mario.new();
         let bullet = Bullet.new(2, 10, false);
+        let counterCharacters = 0;
+        let counterBullets = 0;
 
         // Initialisation of variables
         let key = 0;
@@ -22,17 +26,26 @@ class Main {
         // Game loop
         while(~exit){
 
-            do bullet.update();
+            if(counterBullets = 700){
+                do bullet.update();
+                let counterBullets = 0;
+            }
+            let counterBullets = counterBullets + 1;
 
-            if(key = 131){ do mario.moveUp(); }     //up
-            if(key = 133){ do mario.moveDown(); }   //down
-            if(key = 132){ do mario.moveRigth(); }  //right
-            if(key = 130){ do mario.moveLeft(); }   //left
+            if(counterCharacters = 1000){
 
-            let key = Keyboard.keyPressed();
+                if(key = 131){ do mario.moveUp(); }     //up
+                if(key = 133){ do mario.moveDown(); }   //down
+                if(key = 132){ do mario.moveRigth(); }  //right
+                if(key = 130){ do mario.moveLeft(); }   //left
 
-            if (key = 27){ let exit = true; }
+                let key = Keyboard.keyPressed();
 
+                if (key = 27){ let exit = true; }
+
+                let counterCharacters = 0;
+            }
+            let counterCharacters = counterCharacters + 1;
         }
 
         return;

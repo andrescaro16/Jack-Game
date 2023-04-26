@@ -47,7 +47,7 @@ push constant 1
 add
 pop this 4
 push this 4
-push constant 4
+push constant 1
 eq
 if-goto IF_TRUE0
 goto IF_FALSE0
