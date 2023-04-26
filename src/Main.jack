@@ -1,45 +1,52 @@
 class Main {
 
-		function void delay(int delay) {
-			var int count;
-			let count = 0;
-			while (~(count = delay)) {
-				let count = count + 1;
-			}
-			return;
-		}
+    function void delay(int delay) {
+        var int count;
+        let count = 0;
+        while (~(count = delay)) {
+            let count = count + 1;
+        }
+        return;
+    }
 
     function void main () {
         var Player isaac;
         var Bullet bullet;
         var boolean exit;
         var char key;
-        var int counterCharacters;
-        var int counterBullets;
+        var int delayCharacters;
+        var int delayBullets;
+        var boolean bulletCrashed;
         var boolean flag;
 
         // Class initialisations
         let isaac = Player.new();
-        let bullet = Bullet.new(2, 10, false);
-        let counterCharacters = 0;
-        let counterBullets = 0;
+        let bullet = Bullet.new();
+        let delayCharacters = 0;
+        let delayBullets = 0;
+        let bulletCrashed = false;
 
         // Initialisation of variables
         let key = 0;
         let exit = false;
 
-        // To read the keyboard
+        //if(key = 32){ do bullet.init(5, 30, 1); }     // 32 = space
+        do bullet.init(30, 30, 1);
+
         // Game loop
         while(~exit){
             let key = Keyboard.keyPressed();
 
-            if(counterBullets = 700){
-                do bullet.update();
-                let counterBullets = 0;
+            // Call the update method to move the bullet but with a delay
+            if((bullet.isCrashed()) = (false)){
+                if(delayBullets = 700){
+                    do bullet.update();
+                    let delayBullets = 0;
+                }
+                let delayBullets = delayBullets + 1;
             }
-            let counterBullets = counterBullets + 1;
 
-            if(counterCharacters = 200){
+            if(delayCharacters = 1000){
 
                 if(key = 131){ 
 									let flag = ~(flag);
@@ -68,9 +75,9 @@ class Main {
 
                 if (key = 27){ let exit = true; }
 
-                let counterCharacters = 0;
+                let delayCharacters = 0;
             }
-            let counterCharacters = counterCharacters + 1;
+            let delayCharacters = delayCharacters + 1;
         }
 
         return;
