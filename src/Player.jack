@@ -1,0 +1,122 @@
+class Player {
+    // Instance variables
+    field int x;
+    field int y;
+    field PlayerSprites playerSprites;
+    field boolean leg;                    //true - Right
+		field int location;
+
+    constructor Player new (){
+        let x = 1;
+        let y = 3;
+        let location = location(x, y);
+        let leg = true;                   //standingRight
+        let playerSprites = MarioDraws.new();
+        do playerSprites.draw_MOVE_DOWN_STANDING(location);
+        return this;
+    }
+
+		method void setLeg(boolean newLeg) {
+				let leg = newLeg;
+				return;
+		}
+
+		method int location(int x, int y){
+			return Math.multiply(y, 32) + x;
+		}
+
+    method void moveDown () {
+        if((y + 48) < 255){
+            // Erase
+            let location = location(x, y);
+            do playerSprites.draw_ERASE(location);            // Update position
+            let y = y + 1;
+            // Draw
+						let location = location(x, y);
+            if(~leg){
+                do playerSprites.draw_MOVE_DOWN_LEFT_LEG(location);
+            }else{
+                do playerSprites.draw_MOVE_DOWN_RIGHT_LEG(location);
+            }
+        }
+        return;
+    }
+
+    method void moveUp () {
+        if(y > 5){
+            // Erase
+            let location = location(x, y);
+            do playerSprites.draw_ERASE(location);
+            // Update position
+            let y = y - 1;
+            // Draw
+            let location = location(x, y);
+            if(~leg){
+                do playerSprites.draw_MOVE_UP_LEFT_LEG(location);
+            }else{
+                do playerSprites.draw_MOVE_UP_RIGHT_LEG(location);
+            }
+        }
+        return;
+    }
+
+		method void stand () {
+        if(y > 5){
+            // Erase
+            let location = location(x, y);
+            do playerSprites.draw_ERASE(location);
+            // Draw
+            let location = location(x, y);
+            if(~leg){
+                do playerSprites.draw_MOVE_DOWN_STANDING(location);
+            }else{
+                do playerSprites.draw_MOVE_UP_STANDING(location);
+            }
+        }
+        return;
+    }
+
+    method void moveRigth () {
+        if(x < 30){
+            // Erase
+            let location = location(x, y);
+            do playerSprites.draw_ERASE(location);            // Update position
+            let x = x + 1;
+            // Draw
+						let location = location(x, y);
+            if(~leg){
+                do playerSprites.draw_MOVE_RIGHT_LEFT_LEG(location);
+                do playerSprites.draw_MOVE_RIGHT_MID(location);
+            }else{
+                do playerSprites.draw_MOVE_RIGHT_RIGHT_LEG(location);
+                do playerSprites.draw_MOVE_RIGHT_MID(location);
+            }
+        }
+        return;
+    }
+
+    method void moveLeft () {
+        if(x > 2){
+            // Erase
+            let location = location(x, y);
+            do playerSprites.draw_ERASE(location);            // Update position
+            let x = x - 1;
+            // Draw
+            let location = location(x, y);
+            if(~leg){
+                do playerSprites.draw_MOVE_LEFT_LEFT_LEG(location);
+                do playerSprites.draw_MOVE_LEFT_MID(location);
+            }else{
+                do playerSprites.draw_MOVE_LEFT_RIGHT_LEG(location);
+                do playerSprites.draw_MOVE_LEFT_MID(location);
+            }
+        }
+        return;
+    }
+
+    method void dispose () {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+}

@@ -1,15 +1,25 @@
 class Main {
 
+		function void delay(int delay) {
+			var int count;
+			let count = 0;
+			while (~(count = delay)) {
+				let count = count + 1;
+			}
+			return;
+		}
+
     function void main () {
-        var Mario mario;
+        var Player isaac;
         var Bullet bullet;
         var boolean exit;
         var char key;
         var int counterCharacters;
         var int counterBullets;
+        var boolean flag;
 
         // Class initialisations
-        let mario = Mario.new();
+        let isaac = Player.new();
         let bullet = Bullet.new(2, 10, false);
         let counterCharacters = 0;
         let counterBullets = 0;
@@ -19,12 +29,9 @@ class Main {
         let exit = false;
 
         // To read the keyboard
-        while (~(key = 0)) { let key = Keyboard.keyPressed(); }
-        while (key = 0)    { let key = Keyboard.keyPressed(); }
-        while (~(key = 0)) { let key = Keyboard.keyPressed(); }
-
         // Game loop
         while(~exit){
+            let key = Keyboard.keyPressed();
 
             if(counterBullets = 700){
                 do bullet.update();
@@ -32,14 +39,32 @@ class Main {
             }
             let counterBullets = counterBullets + 1;
 
-            if(counterCharacters = 1000){
+            if(counterCharacters = 200){
 
-                if(key = 131){ do mario.moveUp(); }     //up
-                if(key = 133){ do mario.moveDown(); }   //down
-                if(key = 132){ do mario.moveRigth(); }  //right
-                if(key = 130){ do mario.moveLeft(); }   //left
+                if(key = 131){ 
+									let flag = ~(flag);
+									do isaac.setLeg(flag);
+									do isaac.moveUp();
+								}     //up
+                if(key = 133){ 
+								  let flag = ~(flag);
+									do isaac.setLeg(flag);
+									do isaac.moveDown(); 
+								}   //down
+                if(key = 132){ 
+									do Math.multiply(20,100);
+								  let flag = ~(flag);
+									do isaac.setLeg(flag);
+									do isaac.moveRigth(); 
+								}  //right
+                if(key = 130){ 
+									do Math.multiply(20,100);
+								  let flag = ~(flag);
+									do isaac.setLeg(flag);
+									do isaac.moveLeft(); 
+								}   //left
 
-                let key = Keyboard.keyPressed();
+								if(key = 0){ do isaac.stand(); }
 
                 if (key = 27){ let exit = true; }
 

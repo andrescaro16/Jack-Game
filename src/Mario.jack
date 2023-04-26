@@ -7,7 +7,7 @@ class Mario {
 
     constructor Mario new (){
         let x = 1;
-        let y = 207;
+        let y = 3;
         let direction = true;                   //standingRight
         let marioDraws = MarioDraws.new();
         do marioDraws.standingRight(x, y);
