@@ -59,7 +59,7 @@ push this 4
 call PlayerSprites.draw_ERASE 2
 pop temp 0
 push this 1
-push constant 1
+push constant 10
 add
 pop this 1
 push pointer 0
@@ -105,7 +105,7 @@ push this 4
 call PlayerSprites.draw_ERASE 2
 pop temp 0
 push this 1
-push constant 1
+push constant 10
 sub
 pop this 1
 push pointer 0
@@ -168,7 +168,7 @@ goto IF_END1
 label IF_FALSE1
 push this 2
 push this 4
-call PlayerSprites.draw_MOVE_UP_STANDING 2
+call PlayerSprites.draw_MOVE_DOWN_STANDING 2
 pop temp 0
 label IF_END1
 label IF_FALSE0
@@ -232,7 +232,7 @@ function Player.moveLeft 0
 push argument 0
 pop pointer 0
 push this 0
-push constant 2
+push constant 1
 gt
 if-goto IF_TRUE0
 goto IF_FALSE0

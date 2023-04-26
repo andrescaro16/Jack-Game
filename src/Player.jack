@@ -30,7 +30,7 @@ class Player {
             // Erase
             let location = location(x, y);
             do playerSprites.draw_ERASE(location);            // Update position
-            let y = y + 1;
+            let y = y + 10;
             // Draw
 						let location = location(x, y);
             if(~leg){
@@ -48,7 +48,7 @@ class Player {
             let location = location(x, y);
             do playerSprites.draw_ERASE(location);
             // Update position
-            let y = y - 1;
+            let y = y - 10;
             // Draw
             let location = location(x, y);
             if(~leg){
@@ -70,7 +70,7 @@ class Player {
             if(~leg){
                 do playerSprites.draw_MOVE_DOWN_STANDING(location);
             }else{
-                do playerSprites.draw_MOVE_UP_STANDING(location);
+                do playerSprites.draw_MOVE_DOWN_STANDING(location);
             }
         }
         return;
@@ -96,7 +96,7 @@ class Player {
     }
 
     method void moveLeft () {
-        if(x > 2){
+        if(x > 1){
             // Erase
             let location = location(x, y);
             do playerSprites.draw_ERASE(location);            // Update position
