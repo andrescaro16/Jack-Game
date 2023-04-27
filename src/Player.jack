@@ -16,6 +16,14 @@ class Player {
         return this;
     }
 
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
 		method void setLeg(boolean newLeg) {
 				let leg = newLeg;
 				return;

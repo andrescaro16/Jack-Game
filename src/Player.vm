@@ -22,6 +22,16 @@ call PlayerSprites.draw_MOVE_DOWN_STANDING 2
 pop temp 0
 push pointer 0
 return
+function Player.getX 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Player.getY 0
+push argument 0
+pop pointer 0
+push this 1
+return
 function Player.setLeg 0
 push argument 0
 pop pointer 0

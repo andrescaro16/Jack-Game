@@ -16,6 +16,21 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
+function Main.fire 2
+call isaac.getX 0
+pop local 0
+call isaac.getY 0
+pop local 1
+push local 0
+call Output.printInt 1
+pop temp 0
+push local 0
+push local 1
+push constant 1
+call bullet.init 3
+pop temp 0
+push constant 0
+return
 function Main.main 8
 call Player.new 0
 pop local 0
@@ -32,10 +47,7 @@ pop local 3
 push constant 0
 pop local 2
 push local 1
-push constant 30
-push constant 30
-push constant 1
-call Bullet.init 4
+call Bullet.erase 1
 pop temp 0
 label WHILE_EXP0
 push local 2

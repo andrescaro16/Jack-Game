@@ -9,6 +9,15 @@ class Main {
         return;
     }
 
+    function void fire () {
+      var int xPlayer;
+      var int yPlayer;
+      let xPlayer = isaac.getX();
+      let yPlayer = isaac.getY();
+      do bullet.init(xPlayer + 15, yPlayer + 30, 1);
+      return;
+    }
+
     function void main () {
         var Player isaac;
         var Bullet bullet;
@@ -16,22 +25,18 @@ class Main {
         var char key;
         var int delayCharacters;
         var int delayBullets;
-        var boolean bulletCrashed;
-        var boolean flag;
+        var boolean legFlag;
 
         // Class initialisations
         let isaac = Player.new();
         let bullet = Bullet.new();
         let delayCharacters = 0;
         let delayBullets = 0;
-        let bulletCrashed = false;
 
         // Initialisation of variables
         let key = 0;
         let exit = false;
 
-        //if(key = 32){ do bullet.init(5, 30, 1); }     // 32 = space
-        do bullet.init(30, 30, 1);
 
         // Game loop
         while(~exit){
@@ -49,27 +54,30 @@ class Main {
             if(delayCharacters = 1000){
 
                 if(key = 131){ 
-									let flag = ~(flag);
-									do isaac.setLeg(flag);
+									let legFlag = ~(legFlag);
+									do isaac.setLeg(legFlag);
 									do isaac.moveUp();
 								}     //up
                 if(key = 133){ 
-								  let flag = ~(flag);
-									do isaac.setLeg(flag);
+								  let legFlag = ~(legFlag);
+									do isaac.setLeg(legFlag);
 									do isaac.moveDown(); 
 								}   //down
                 if(key = 132){ 
 									do Math.multiply(20,100);
-								  let flag = ~(flag);
-									do isaac.setLeg(flag);
+								  let legFlag = ~(legFlag);
+									do isaac.setLeg(legFlag);
 									do isaac.moveRigth(); 
 								}  //right
                 if(key = 130){ 
 									do Math.multiply(20,100);
-								  let flag = ~(flag);
-									do isaac.setLeg(flag);
+								  let legFlag = ~(legFlag);
+									do isaac.setLeg(legFlag);
 									do isaac.moveLeft(); 
 								}   //left
+                if(key = 32){
+                  do Main.fire();
+                }
 
 								if(key = 0){ do isaac.stand(); }
 

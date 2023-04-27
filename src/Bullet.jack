@@ -3,16 +3,14 @@ class Bullet{
    // Instance variables
    field int x;
    field int y;
-   field int tick;
    field int direction;
    field boolean crashed;
    field int counterBullets;
 
    constructor Bullet new (){
-      let x = 0;
-      let y = 0;
+      let x = 3;
+      let y = 3;
       let direction = 1;      //(0, up) (1, right) (2, down) (3, left) 
-      let tick = 0;
       let counterBullets = 0;
       let crashed = false;
       return this;
@@ -26,14 +24,14 @@ class Bullet{
 
    method void draw() {
       do Screen.setColor(true);
-      do Screen.drawCircle(x, y, 2);
+      do Screen.drawCircle(x, y, 1);
       return;
    }
 
 
    method void erase(){
       do Screen.setColor(false);
-      do Screen.drawCircle(x, y, 2);
+      do Screen.drawCircle(x, y, 1);
       return;
    }
 
