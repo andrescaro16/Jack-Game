@@ -8,8 +8,8 @@ class Bullet{
    field int counterBullets;
 
    constructor Bullet new (){
-      let x = 3;
-      let y = 3;
+      let x = 5;
+      let y = 5;
       let direction = 1;      //(0, up) (1, right) (2, down) (3, left) 
       let counterBullets = 0;
       let crashed = false;
@@ -24,14 +24,14 @@ class Bullet{
 
    method void draw() {
       do Screen.setColor(true);
-      do Screen.drawCircle(x, y, 1);
+      do Screen.drawCircle(x, y, 4);
       return;
    }
 
 
    method void erase(){
       do Screen.setColor(false);
-      do Screen.drawCircle(x, y, 1);
+      do Screen.drawCircle(x, y, 4);
       return;
    }
 
