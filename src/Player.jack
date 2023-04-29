@@ -11,7 +11,7 @@ class Player {
         let y = 3;
         let location = location(x, y);
         let leg = true;                   //standingRight
-        let playerSprites = MarioDraws.new();
+        let playerSprites = PlayerSprites.new();
         do playerSprites.draw_MOVE_DOWN_STANDING(location);
         return this;
     }
@@ -75,17 +75,13 @@ class Player {
             do playerSprites.draw_ERASE(location);
             // Draw
             let location = location(x, y);
-            if(~leg){
-                do playerSprites.draw_MOVE_DOWN_STANDING(location);
-            }else{
-                do playerSprites.draw_MOVE_DOWN_STANDING(location);
-            }
+            do playerSprites.draw_MOVE_DOWN_STANDING(location);
         }
         return;
     }
 
     method void moveRigth () {
-        if(x < 30){
+        if(x < 29){
             // Erase
             let location = location(x, y);
             do playerSprites.draw_ERASE(location);            // Update position
