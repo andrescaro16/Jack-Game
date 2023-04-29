@@ -1,4 +1,8 @@
 class Main {
+    static Player isaac;
+    static Bullet bullet;
+    static int dir;
+		static boolean bulletAlive;
 
     function void delay(int delay) {
         var int count;
@@ -10,28 +14,28 @@ class Main {
     }
 
     function void fire () {
-      var int xPlayer;
-      var int yPlayer;
-      let xPlayer = isaac.getX();
-      let yPlayer = isaac.getY();
-      do bullet.init(xPlayer + 15, yPlayer + 30, 1);
-      return;
+				var int xPlayer;
+				var int yPlayer;
+				let bulletAlive = true;
+				let xPlayer = isaac.getX();
+				let yPlayer = isaac.getY();
+				do bullet.init(xPlayer + Math.multiply(xPlayer, 16) + 20, yPlayer + 10, dir);
+				return;
     }
 
     function void main () {
-        var Player isaac;
-        var Bullet bullet;
         var boolean exit;
         var char key;
         var int delayCharacters;
         var int delayBullets;
         var boolean legFlag;
+				let bullet = Bullet.new();
 
         // Class initialisations
         let isaac = Player.new();
-        let bullet = Bullet.new();
         let delayCharacters = 0;
         let delayBullets = 0;
+				let dir = 0;
 
         // Initialisation of variables
         let key = 0;
@@ -43,13 +47,15 @@ class Main {
             let key = Keyboard.keyPressed();
 
             // Call the update method to move the bullet but with a delay
-            if((bullet.isCrashed()) = (false)){
-                if(delayBullets = 700){
-                    do bullet.update();
-                    let delayBullets = 0;
-                }
-                let delayBullets = delayBullets + 1;
-            }
+						if((bullet.isCrashed()) = (false)){
+								let bulletAlive = false;
+								if(delayBullets = 700){
+										do bullet.update();
+										let delayBullets = 0;
+								}
+								let delayBullets = delayBullets + 1;
+						}	
+            
 
             if(delayCharacters = 1000){
 
@@ -57,23 +63,27 @@ class Main {
 									let legFlag = ~(legFlag);
 									do isaac.setLeg(legFlag);
 									do isaac.moveUp();
+									let dir = 0;
 								}     //up
                 if(key = 133){ 
 								  let legFlag = ~(legFlag);
 									do isaac.setLeg(legFlag);
 									do isaac.moveDown(); 
+									let dir = 2;
 								}   //down
                 if(key = 132){ 
 									do Math.multiply(20,100);
 								  let legFlag = ~(legFlag);
 									do isaac.setLeg(legFlag);
 									do isaac.moveRigth(); 
+									let dir = 1;
 								}  //right
                 if(key = 130){ 
 									do Math.multiply(20,100);
 								  let legFlag = ~(legFlag);
 									do isaac.setLeg(legFlag);
 									do isaac.moveLeft(); 
+									let dir = 3;
 								}   //left
                 if(key = 32){
                   do Main.fire();
