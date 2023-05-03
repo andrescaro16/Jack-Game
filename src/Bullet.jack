@@ -50,12 +50,12 @@ class Bullet{
             if(direction = 2){
                let y = y + 1;
             } else {
-               let x = x -1;
+               let x = x - 1;
             }
          }
       }
       // Crashed with the walls validation
-      if((x < 3) | (x > 508) | (y < 3) | (y > 252)){
+      if((x < 5) | (x > 505) | (y < 5) | (y > 250)){
          let crashed = true;
       }
       // Draw
@@ -66,6 +66,7 @@ class Bullet{
 
    // Reset/"create" a new bullet (other shoot)
    method void init(int nx, int ny, int nDirection) {
+      do erase();
       let x = nx;
       let y = ny;
       let direction = nDirection;

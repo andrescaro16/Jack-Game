@@ -19,7 +19,7 @@ class Main {
 				let bulletAlive = true;
 				let xPlayer = isaac.getX();
 				let yPlayer = isaac.getY();
-				do bullet.init(xPlayer + Math.multiply(xPlayer, 16) + 20, yPlayer + 10, dir);
+				do bullet.init(xPlayer + Math.multiply(xPlayer, 16) + 9, yPlayer + 10, dir);
 				return;
     }
 

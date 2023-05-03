@@ -4,7 +4,7 @@ class Player {
     field int y;
     field PlayerSprites playerSprites;
     field boolean leg;                    //true - Right
-		field int location;
+	field int location;
 
     constructor Player new (){
         let x = 1;
@@ -24,14 +24,14 @@ class Player {
         return y;
     }
 
-		method void setLeg(boolean newLeg) {
-				let leg = newLeg;
-				return;
-		}
+    method void setLeg(boolean newLeg) {
+        let leg = newLeg;
+        return;
+    }
 
-		method int location(int x, int y){
-			return Math.multiply(y, 32) + x;
-		}
+    method int location(int x, int y){
+        return Math.multiply(y, 32) + x;
+    }
 
     method void moveDown () {
         if((y + 48) < 255){
@@ -68,7 +68,7 @@ class Player {
         return;
     }
 
-		method void stand () {
+	method void stand () {
         if(y > 5){
             // Erase
             let location = location(x, y);

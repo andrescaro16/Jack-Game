@@ -32,7 +32,7 @@ push local 0
 push constant 16
 call Math.multiply 2
 add
-push constant 20
+push constant 9
 add
 push local 1
 push constant 10
