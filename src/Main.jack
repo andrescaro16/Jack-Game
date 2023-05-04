@@ -1,5 +1,6 @@
 class Main {
     static Player isaac;
+    static Monster monster;
     static Bullet bullet;
     static int dir;
 		static boolean bulletAlive;
@@ -29,17 +30,21 @@ class Main {
         var int delayCharacters;
         var int delayBullets;
         var boolean legFlag;
-				let bullet = Bullet.new();
 
         // Class initialisations
         let isaac = Player.new();
+        let monster = Monster.new();
+				let bullet = Bullet.new(monster);
         let delayCharacters = 0;
         let delayBullets = 0;
 				let dir = 0;
 
-        // Initialisation of variables
+        // Variables initialisation
         let key = 0;
         let exit = false;
+
+        // Start the monster
+        do monster.init();
 
 
         // Game loop

@@ -2,8 +2,8 @@ class PlayerSprites{
 	field boolean active;
 
 	constructor PlayerSprites new (){
-			let active = true;
-			return this;
+		let active = true;
+		return this;
 	}
 
 	method void draw_MOVE_UP_STANDING(int location) {

@@ -1,0 +1,110 @@
+class Monster {
+    // Instance variables
+    field int x;
+    field int y;
+    field MonsterSprites monsterSprites;
+    field boolean direction;                      //true - Right
+	field int location;
+    field int lives;
+
+    constructor Monster new (){
+        let lives = 10;
+        let x = 16;
+        let y = 16;
+        let location = location(x, y);
+        let direction = false;                     //left
+        let monsterSprites = MonsterSprites.new();
+        do monsterSprites.draw_MOVE_LEFT(location);
+        return this;
+    }
+
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
+    method void setDirection(boolean newDirection) {
+        let direction = newDirection;
+        return;
+    }
+
+    method int location(int x, int y){
+        return Math.multiply(y, 32) + x;
+    }
+
+    method void moveDown () {
+        if((y + 48) < 255){
+            // Erase
+            let location = location(x, y);
+            do monsterSprites.draw_ERASE(location);            // Update position
+            let y = y + 10;
+            // Draw
+			let location = location(x, y);
+            if(direction){
+                do monsterSprites.draw_MOVE_RIGHT(location);
+            }else{
+                do monsterSprites.draw_MOVE_LEFT(location);
+            }
+        }
+        return;
+    }
+
+    method void moveUp () {
+        if(y > 5){
+            // Erase
+            let location = location(x, y);
+            do monsterSprites.draw_ERASE(location);
+            // Update position
+            let y = y - 10;
+            // Draw
+            let location = location(x, y);
+            if(direction){
+                do monsterSprites.draw_MOVE_RIGHT(location);
+            }else{
+                do monsterSprites.draw_MOVE_LEFT(location);
+            }
+        }
+        return;
+    }
+
+    method void moveRigth () {
+        if(x < 29){
+            // Erase
+            let location = location(x, y);
+            do monsterSprites.draw_ERASE(location);            // Update position
+            let x = x + 1;
+            // Draw
+			let location = location(x, y);
+            do setDirection(true);
+            do monsterSprites.draw_MOVE_RIGHT(location);
+        }
+        return;
+    }
+
+    method void moveLeft () {
+        if(x > 1){
+            // Erase
+            let location = location(x, y);
+            do monsterSprites.draw_ERASE(location);            // Update position
+            let x = x - 1;
+            // Draw
+            let location = location(x, y);
+            do setDirection(false);
+            do monsterSprites.draw_MOVE_LEFT(location);
+        }
+        return;
+    }
+
+    method void init{
+        //code
+    }
+
+    method void dispose () {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+}

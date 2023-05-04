@@ -1,0 +1,29 @@
+class MonsterSprites{
+	field boolean active;
+
+	constructor MonsterSprites new (){
+        let active = true;
+        return this;
+	}
+
+	method void draw_MOVE_LEFT(int location) {
+		var int memAddress;
+		let memAddress = 16384+location;
+		//code
+		return; 
+	}
+	
+	method void draw_MOVE_RIGHT(int location) {
+		var int memAddress;
+		let memAddress = 16384+location;
+		//code
+		return; 
+	}	
+
+	method void draw_ERASE(int location) {
+		var int memAddress;
+		let memAddress = 16384+location;
+		//code
+		return; 
+	}
+}
