@@ -19,14 +19,14 @@ return
 function Main.fire 2
 push constant 0
 not
-pop static 3
+pop static 4
 push static 0
 call Player.getX 1
 pop local 0
 push static 0
 call Player.getY 1
 pop local 1
-push static 1
+push static 2
 push local 0
 push local 0
 push constant 16
@@ -37,26 +37,32 @@ add
 push local 1
 push constant 10
 add
-push static 2
+push static 3
 call Bullet.init 4
 pop temp 0
 push constant 0
 return
 function Main.main 5
-call Bullet.new 0
-pop static 1
 call Player.new 0
 pop static 0
+call Monster.new 0
+pop static 1
+push static 1
+call Bullet.new 1
+pop static 2
 push constant 0
 pop local 2
 push constant 0
 pop local 3
 push constant 0
-pop static 2
+pop static 3
 push constant 0
 pop local 1
 push constant 0
 pop local 0
+push static 1
+call Monster.init 1
+pop temp 0
 label WHILE_EXP0
 push local 0
 not
@@ -64,7 +70,7 @@ not
 if-goto WHILE_END0
 call Keyboard.keyPressed 0
 pop local 1
-push static 1
+push static 2
 call Bullet.isCrashed 1
 push constant 0
 eq
@@ -72,14 +78,14 @@ if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push constant 0
-pop static 3
+pop static 4
 push local 3
 push constant 700
 eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push static 1
+push static 2
 call Bullet.update 1
 pop temp 0
 push constant 0
@@ -113,7 +119,7 @@ push static 0
 call Player.moveUp 1
 pop temp 0
 push constant 0
-pop static 2
+pop static 3
 label IF_FALSE3
 push local 1
 push constant 133
@@ -132,7 +138,7 @@ push static 0
 call Player.moveDown 1
 pop temp 0
 push constant 2
-pop static 2
+pop static 3
 label IF_FALSE4
 push local 1
 push constant 132
@@ -155,7 +161,7 @@ push static 0
 call Player.moveRigth 1
 pop temp 0
 push constant 1
-pop static 2
+pop static 3
 label IF_FALSE5
 push local 1
 push constant 130
@@ -178,7 +184,7 @@ push static 0
 call Player.moveLeft 1
 pop temp 0
 push constant 3
-pop static 2
+pop static 3
 label IF_FALSE6
 push local 1
 push constant 32

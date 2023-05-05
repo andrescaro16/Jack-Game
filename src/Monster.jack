@@ -98,8 +98,9 @@ class Monster {
         return;
     }
 
-    method void init{
+    method void init(){
         //code
+        return;
     }
 
     method void dispose () {
