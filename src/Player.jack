@@ -44,6 +44,11 @@ class Player {
     method void hitMonster() {
         if( (x > (monster.getX() + 1)) & (x < (monster.getX() + 4)) & (y > (monster.getY() + 10)) & (y < (monster.getY() + 60)) ) {
             let lifes = lifes - 1;
+						return;
+        }
+        if( (x+1 > (monster.getX() + 1)) & (x+1 < (monster.getX() + 4)) & (y+20 > (monster.getY() + 10)) & (y+20 < (monster.getY() + 60)) ) {
+            let lifes = lifes - 1;
+						return;
         }
         return;
     }

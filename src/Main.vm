@@ -70,55 +70,44 @@ not
 if-goto WHILE_END0
 call Keyboard.keyPressed 0
 pop local 1
-push static 0
-call Player.getLifes 1
-push constant 1
-lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push constant 0
-not
-pop local 0
-label IF_FALSE0
 push static 2
 call Bullet.isCrashed 1
 push constant 0
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
 push constant 0
 pop static 4
 push local 3
 push constant 700
 eq
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
 push static 2
 call Bullet.update 1
 pop temp 0
 push constant 0
 pop local 3
-label IF_FALSE2
+label IF_FALSE1
 push local 3
 push constant 1
 add
 pop local 3
-label IF_FALSE1
+label IF_FALSE0
 push local 4
 push constant 700
 eq
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
 push static 1
 call Monster.init 1
 pop temp 0
 push constant 0
 pop local 4
-label IF_FALSE3
+label IF_FALSE2
 push local 4
 push constant 1
 add
@@ -126,15 +115,15 @@ pop local 4
 push local 2
 push constant 1000
 eq
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
 push local 1
 push constant 131
 eq
-if-goto IF_TRUE5
-goto IF_FALSE5
-label IF_TRUE5
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
 push local 5
 not
 pop local 5
@@ -150,13 +139,13 @@ call Player.hitMonster 1
 pop temp 0
 push constant 0
 pop static 3
-label IF_FALSE5
+label IF_FALSE4
 push local 1
 push constant 133
 eq
-if-goto IF_TRUE6
-goto IF_FALSE6
-label IF_TRUE6
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
 push local 5
 not
 pop local 5
@@ -172,13 +161,13 @@ call Player.hitMonster 1
 pop temp 0
 push constant 2
 pop static 3
-label IF_FALSE6
+label IF_FALSE5
 push local 1
 push constant 132
 eq
-if-goto IF_TRUE7
-goto IF_FALSE7
-label IF_TRUE7
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
 push constant 20
 push constant 100
 call Math.multiply 2
@@ -198,13 +187,13 @@ call Player.hitMonster 1
 pop temp 0
 push constant 1
 pop static 3
-label IF_FALSE7
+label IF_FALSE6
 push local 1
 push constant 130
 eq
-if-goto IF_TRUE8
-goto IF_FALSE8
-label IF_TRUE8
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
 push constant 20
 push constant 100
 call Math.multiply 2
@@ -224,32 +213,50 @@ call Player.hitMonster 1
 pop temp 0
 push constant 3
 pop static 3
-label IF_FALSE8
+label IF_FALSE7
 push local 1
 push constant 32
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+call Main.fire 0
+pop temp 0
+label IF_FALSE8
+push local 1
+push constant 0
 eq
 if-goto IF_TRUE9
 goto IF_FALSE9
 label IF_TRUE9
-call Main.fire 0
-pop temp 0
-label IF_FALSE9
-push local 1
-push constant 0
-eq
-if-goto IF_TRUE10
-goto IF_FALSE10
-label IF_TRUE10
 push static 0
 call Player.stand 1
 pop temp 0
 push static 0
 call Player.hitMonster 1
 pop temp 0
-label IF_FALSE10
+label IF_FALSE9
 push local 1
 push constant 27
 eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 0
+not
+pop local 0
+label IF_FALSE10
+push constant 0
+pop local 2
+label IF_FALSE3
+push local 2
+push constant 1
+add
+pop local 2
+push static 0
+call Player.getLifes 1
+push constant 1
+lt
 if-goto IF_TRUE11
 goto IF_FALSE11
 label IF_TRUE11
@@ -257,13 +264,6 @@ push constant 0
 not
 pop local 0
 label IF_FALSE11
-push constant 0
-pop local 2
-label IF_FALSE4
-push local 2
-push constant 1
-add
-pop local 2
 goto WHILE_EXP0
 label WHILE_END0
 call Screen.clearScreen 0

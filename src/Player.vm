@@ -94,7 +94,54 @@ push this 5
 push constant 1
 sub
 pop this 5
+push constant 0
+return
 label IF_FALSE0
+push this 0
+push constant 1
+add
+push this 6
+call Monster.getX 1
+push constant 1
+add
+gt
+push this 0
+push constant 1
+add
+push this 6
+call Monster.getX 1
+push constant 4
+add
+lt
+and
+push this 1
+push constant 20
+add
+push this 6
+call Monster.getY 1
+push constant 10
+add
+gt
+and
+push this 1
+push constant 20
+add
+push this 6
+call Monster.getY 1
+push constant 60
+add
+lt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 5
+push constant 1
+sub
+pop this 5
+push constant 0
+return
+label IF_FALSE1
 push constant 0
 return
 function Player.moveDown 0

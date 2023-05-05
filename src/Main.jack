@@ -51,11 +51,6 @@ class Main {
         // Game loop
         while(~exit){
             let key = Keyboard.keyPressed();
-
-						if (isaac.getLifes() < 1) {
-								let exit = true;
-						}
-
             // Call the update method to move the bullet but with a delay
 						if((bullet.isCrashed()) = (false)){
 								let bulletAlive = false;
@@ -120,6 +115,9 @@ class Main {
                 let delayCharacters = 0;
             }
             let delayCharacters = delayCharacters + 1;
+						if (isaac.getLifes() < 1) {
+								let exit = true;
+						}
         }
 
 				do Screen.clearScreen();
