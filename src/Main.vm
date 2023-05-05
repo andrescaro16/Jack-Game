@@ -43,10 +43,11 @@ pop temp 0
 push constant 0
 return
 function Main.main 5
-call Player.new 0
-pop static 0
 call Monster.new 0
 pop static 1
+push static 1
+call Player.new 1
+pop static 0
 push static 1
 call Bullet.new 1
 pop static 2
@@ -70,59 +71,51 @@ not
 if-goto WHILE_END0
 call Keyboard.keyPressed 0
 pop local 1
+push static 0
+call Player.getLifes 1
+push constant 1
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+pop local 0
+label IF_FALSE0
 push static 2
 call Bullet.isCrashed 1
 push constant 0
 eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
 push constant 0
 pop static 4
 push local 3
 push constant 700
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
 push static 2
 call Bullet.update 1
 pop temp 0
 push constant 0
 pop local 3
-label IF_FALSE1
+label IF_FALSE2
 push local 3
 push constant 1
 add
 pop local 3
-label IF_FALSE0
+label IF_FALSE1
 push local 2
 push constant 1000
-eq
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
-push local 1
-push constant 131
 eq
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
-push local 4
-not
-pop local 4
-push static 0
-push local 4
-call Player.setLeg 2
-pop temp 0
-push static 0
-call Player.moveUp 1
-pop temp 0
-push constant 0
-pop static 3
-label IF_FALSE3
 push local 1
-push constant 133
+push constant 131
 eq
 if-goto IF_TRUE4
 goto IF_FALSE4
@@ -135,21 +128,20 @@ push local 4
 call Player.setLeg 2
 pop temp 0
 push static 0
-call Player.moveDown 1
+call Player.moveUp 1
 pop temp 0
-push constant 2
+push static 0
+call Player.hitMonster 1
+pop temp 0
+push constant 0
 pop static 3
 label IF_FALSE4
 push local 1
-push constant 132
+push constant 133
 eq
 if-goto IF_TRUE5
 goto IF_FALSE5
 label IF_TRUE5
-push constant 20
-push constant 100
-call Math.multiply 2
-pop temp 0
 push local 4
 not
 pop local 4
@@ -158,13 +150,16 @@ push local 4
 call Player.setLeg 2
 pop temp 0
 push static 0
-call Player.moveRigth 1
+call Player.moveDown 1
 pop temp 0
-push constant 1
+push static 0
+call Player.hitMonster 1
+pop temp 0
+push constant 2
 pop static 3
 label IF_FALSE5
 push local 1
-push constant 130
+push constant 132
 eq
 if-goto IF_TRUE6
 goto IF_FALSE6
@@ -181,48 +176,140 @@ push local 4
 call Player.setLeg 2
 pop temp 0
 push static 0
-call Player.moveLeft 1
+call Player.moveRigth 1
 pop temp 0
-push constant 3
+push static 0
+call Player.hitMonster 1
+pop temp 0
+push constant 1
 pop static 3
 label IF_FALSE6
 push local 1
-push constant 32
+push constant 130
 eq
 if-goto IF_TRUE7
 goto IF_FALSE7
 label IF_TRUE7
-call Main.fire 0
+push constant 20
+push constant 100
+call Math.multiply 2
 pop temp 0
+push local 4
+not
+pop local 4
+push static 0
+push local 4
+call Player.setLeg 2
+pop temp 0
+push static 0
+call Player.moveLeft 1
+pop temp 0
+push static 0
+call Player.hitMonster 1
+pop temp 0
+push constant 3
+pop static 3
 label IF_FALSE7
 push local 1
-push constant 0
+push constant 32
 eq
 if-goto IF_TRUE8
 goto IF_FALSE8
 label IF_TRUE8
-push static 0
-call Player.stand 1
+call Main.fire 0
 pop temp 0
 label IF_FALSE8
 push local 1
-push constant 27
+push constant 0
 eq
 if-goto IF_TRUE9
 goto IF_FALSE9
 label IF_TRUE9
+push static 0
+call Player.stand 1
+pop temp 0
+push static 0
+call Player.hitMonster 1
+pop temp 0
+label IF_FALSE9
+push local 1
+push constant 27
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
 push constant 0
 not
 pop local 0
-label IF_FALSE9
+label IF_FALSE10
 push constant 0
 pop local 2
-label IF_FALSE2
+label IF_FALSE3
 push local 2
 push constant 1
 add
 pop local 2
 goto WHILE_EXP0
 label WHILE_END0
+call Screen.clearScreen 0
+pop temp 0
+push constant 27
+call String.new 1
+push constant 72
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 44
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 161
+call String.appendChar 2
+push constant 74
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
 push constant 0
 return

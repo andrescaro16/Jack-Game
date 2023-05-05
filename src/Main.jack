@@ -32,8 +32,8 @@ class Main {
         var boolean legFlag;
 
         // Class initialisations
-        let isaac = Player.new();
         let monster = Monster.new();
+        let isaac = Player.new(monster);
 				let bullet = Bullet.new(monster);
         let delayCharacters = 0;
         let delayBullets = 0;
@@ -50,6 +50,10 @@ class Main {
         // Game loop
         while(~exit){
             let key = Keyboard.keyPressed();
+
+						if (isaac.getLifes() < 1) {
+								let exit = true;
+						}
 
             // Call the update method to move the bullet but with a delay
 						if((bullet.isCrashed()) = (false)){
@@ -68,12 +72,14 @@ class Main {
 									let legFlag = ~(legFlag);
 									do isaac.setLeg(legFlag);
 									do isaac.moveUp();
+									do isaac.hitMonster();
 									let dir = 0;
 								}     //up
                 if(key = 133){ 
 								  let legFlag = ~(legFlag);
 									do isaac.setLeg(legFlag);
 									do isaac.moveDown(); 
+									do isaac.hitMonster();
 									let dir = 2;
 								}   //down
                 if(key = 132){ 
@@ -81,6 +87,7 @@ class Main {
 								  let legFlag = ~(legFlag);
 									do isaac.setLeg(legFlag);
 									do isaac.moveRigth(); 
+									do isaac.hitMonster();
 									let dir = 1;
 								}  //right
                 if(key = 130){ 
@@ -88,13 +95,17 @@ class Main {
 								  let legFlag = ~(legFlag);
 									do isaac.setLeg(legFlag);
 									do isaac.moveLeft(); 
+									do isaac.hitMonster();
 									let dir = 3;
 								}   //left
                 if(key = 32){
                   do Main.fire();
                 }
 
-								if(key = 0){ do isaac.stand(); }
+								if(key = 0){ 
+										do isaac.stand();
+										do isaac.hitMonster();
+								}
 
                 if (key = 27){ let exit = true; }
 
@@ -102,6 +113,9 @@ class Main {
             }
             let delayCharacters = delayCharacters + 1;
         }
+
+				do Screen.clearScreen();
+				do Output.printString("Has perdido chaval, ¡Joder!");
 
         return;
     }

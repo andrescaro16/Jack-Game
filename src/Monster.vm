@@ -6,7 +6,7 @@ push constant 10
 pop this 5
 push constant 16
 pop this 0
-push constant 16
+push constant 80
 pop this 1
 push pointer 0
 push this 0

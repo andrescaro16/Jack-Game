@@ -83,7 +83,7 @@ pop temp 0
 push local 0
 push constant 352
 add
-push constant 3276
+push constant 16384
 neg
 call Memory.poke 2
 pop temp 0
@@ -975,7 +975,7 @@ pop temp 0
 push local 0
 push constant 322
 add
-push constant 3276
+push constant 16384
 neg
 call Memory.poke 2
 pop temp 0
@@ -1528,21 +1528,21 @@ pop temp 0
 push local 0
 push constant 931
 add
-push constant 3276
+push constant 16384
 neg
 call Memory.poke 2
 pop temp 0
 push local 0
 push constant 963
 add
-push constant 3276
+push constant 16384
 neg
 call Memory.poke 2
 pop temp 0
 push local 0
 push constant 995
 add
-push constant 3276
+push constant 16384
 neg
 call Memory.poke 2
 pop temp 0
@@ -1693,7 +1693,7 @@ pop temp 0
 push local 0
 push constant 1795
 add
-push constant 3276
+push constant 16384
 neg
 call Memory.poke 2
 pop temp 0
