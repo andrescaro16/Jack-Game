@@ -46,6 +46,15 @@ push argument 1
 pop this 3
 push constant 0
 return
+function Monster.takeDamage 0
+push argument 0
+pop pointer 0
+push this 9
+push constant 1
+sub
+pop this 9
+push constant 0
+return
 function Monster.location 0
 push argument 0
 pop pointer 0

@@ -7,18 +7,20 @@ class Monster {
     field boolean backX;
     field boolean backY;
     field boolean verticalReady;
+    field boolean death;
     field int way;
-	field int location;
-    field int lives;
+		field int location;
+    field int lifes;
 
     constructor Monster new (){
-        let lives = 10;
+        let lifes = 10;
         let x = 22;                               //right 22 - left 1
         let y = 90;                               //down 160 - up 20 - center 90
         let location = location(x, y);
         let backX = false;
         let backY = false;
         let verticalReady = false;
+        let death = false;
         let direction = false;                     //left
         let monsterSprites = MonsterSprites.new();
         do monsterSprites.draw_MOVE_LEFT(location);
@@ -32,11 +34,27 @@ class Monster {
     method int getY(){
         return y;
     }
+		
+		method boolean getState() {
+				return death;
+		}
 
     method void setDirection(boolean newDirection) {
         let direction = newDirection;
         return;
     }
+
+		method void takeDamage() {
+				let lifes = lifes - 1;
+				return;
+		}
+
+		method void lifeCheck() {
+				if (lifes = 0) {
+						let death = true;
+				}
+				return;
+		}
 
     method int location(int x, int y){
         return Math.multiply(y, 32) + x;
@@ -170,6 +188,10 @@ class Monster {
 
     method void init(){
         let way = 2;
+				if (death = 0) {
+						do die();
+						return;
+				}
         if(way = 0){                                // Up
             do goUp();
             if((verticalReady) = true){
