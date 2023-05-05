@@ -55,15 +55,15 @@ push this 0
 push constant 5
 lt
 push this 0
-push constant 505
+push constant 500
 gt
 or
 push this 1
-push constant 6
+push constant 10
 lt
 or
 push this 1
-push constant 250
+push constant 240
 gt
 or
 if-goto IF_TRUE0
@@ -76,27 +76,31 @@ label IF_FALSE0
 push this 0
 push this 5
 call Monster.getX 1
-push constant 10
+push constant 16
+call Math.multiply 2
+push constant 5
 add
 gt
 push this 0
 push this 5
 call Monster.getX 1
-push constant 30
+push constant 16
+call Math.multiply 2
+push constant 60
 add
 lt
 and
 push this 1
 push this 5
 call Monster.getY 1
-push constant 10
+push constant 5
 add
 gt
 and
 push this 1
 push this 5
 call Monster.getY 1
-push constant 30
+push constant 60
 add
 lt
 and
@@ -106,6 +110,9 @@ label IF_TRUE1
 push constant 0
 not
 pop this 3
+push this 5
+call Monster.takeDamage 1
+pop temp 0
 label IF_FALSE1
 push constant 0
 return
@@ -122,7 +129,7 @@ if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push this 1
-push constant 2
+push constant 6
 sub
 pop this 1
 goto IF_END0
@@ -134,7 +141,7 @@ if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 push this 0
-push constant 2
+push constant 6
 add
 pop this 0
 goto IF_END1
@@ -146,13 +153,13 @@ if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
 push this 1
-push constant 2
+push constant 6
 add
 pop this 1
 goto IF_END2
 label IF_FALSE2
 push this 0
-push constant 2
+push constant 6
 sub
 pop this 0
 label IF_END2

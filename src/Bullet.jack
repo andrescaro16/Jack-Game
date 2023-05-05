@@ -40,11 +40,13 @@ class Bullet{
    
    // Crashed with the walls validation
    method void getCrashed(){
-      if((x < 5) | (x > 505) | (y < 6) | (y > 250)){
+      if((x < 5) | (x > 500) | (y < 10) | (y > 240)){
          let crashed = true;
       }
-      if( (x > (monster.getX() + 10)) & (x < (monster.getX() + 30)) & (y > (monster.getY() + 10)) & (y < (monster.getY() + 30)) ){
+      if( (x > (Math.multiply(monster.getX(),16) + 5)) & (x < (Math.multiply(monster.getX(), 16) + 60)) & (y > (monster.getY() + 5)) & (y < (monster.getY() + 60)) ){	
          let crashed = true;
+				 do monster.takeDamage();
+				 do monster.lifeCheck();
       }
 			return;
    }
@@ -56,15 +58,15 @@ class Bullet{
       do erase();
       // Direction validations
       if(direction = 0){
-         let y = y - 2;
+         let y = y - 6;
       } else {
          if(direction = 1){
-            let x = x + 2;
+            let x = x + 6;
          } else {
             if(direction = 2){
-               let y = y + 2;
+               let y = y + 6;
             } else {
-               let x = x - 2;
+               let x = x - 6;
             }
          }
       }
