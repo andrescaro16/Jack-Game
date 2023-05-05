@@ -21,7 +21,7 @@ class MonsterSprites{
 		do Memory.poke(memAddress+256, 0);
 		do Memory.poke(memAddress+288, 0);
 		do Memory.poke(memAddress+320, 0);
-		do Memory.poke(memAddress+352, -3276);
+		do Memory.poke(memAddress+352, -16384);
 		do Memory.poke(memAddress+384, -16384);
 		do Memory.poke(memAddress+416, -4096);
 		do Memory.poke(memAddress+448, 6144);
@@ -162,7 +162,7 @@ class MonsterSprites{
 		do Memory.poke(memAddress+226, 16383);
 		do Memory.poke(memAddress+258, 32767);
 		do Memory.poke(memAddress+290, -16384);
-		do Memory.poke(memAddress+322, -3276);
+		do Memory.poke(memAddress+322, -16384);
 		do Memory.poke(memAddress+354, 0);
 		do Memory.poke(memAddress+386, 0);
 		do Memory.poke(memAddress+418, 0);
@@ -252,9 +252,9 @@ class MonsterSprites{
 		do Memory.poke(memAddress+835, 24576);
 		do Memory.poke(memAddress+867, 16384);
 		do Memory.poke(memAddress+899, -16384);
-		do Memory.poke(memAddress+931, -3276);
-		do Memory.poke(memAddress+963, -3276);
-		do Memory.poke(memAddress+995, -3276);
+		do Memory.poke(memAddress+931, -16384);
+		do Memory.poke(memAddress+963, -16384);
+		do Memory.poke(memAddress+995, -16384);
 		do Memory.poke(memAddress+1027, 0);
 		do Memory.poke(memAddress+1059, 0);
 		do Memory.poke(memAddress+1091, 0);
@@ -279,7 +279,7 @@ class MonsterSprites{
 		do Memory.poke(memAddress+1699, 127);
 		do Memory.poke(memAddress+1731, 127);
 		do Memory.poke(memAddress+1763, 31);
-		do Memory.poke(memAddress+1795, -3276);
+		do Memory.poke(memAddress+1795, -16384);
 		do Memory.poke(memAddress+1827, -16384);
 		do Memory.poke(memAddress+1859, -512);
 		do Memory.poke(memAddress+1891, 4080);

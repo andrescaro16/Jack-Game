@@ -1,5 +1,5 @@
 function Player.new 0
-push constant 5
+push constant 7
 call Memory.alloc 1
 pop pointer 0
 push constant 1
@@ -20,6 +20,10 @@ push this 2
 push this 4
 call PlayerSprites.draw_MOVE_DOWN_STANDING 2
 pop temp 0
+push constant 3
+pop this 5
+push argument 0
+pop this 6
 push pointer 0
 return
 function Player.getX 0
@@ -31,6 +35,11 @@ function Player.getY 0
 push argument 0
 pop pointer 0
 push this 1
+return
+function Player.getLifes 0
+push argument 0
+pop pointer 0
+push this 5
 return
 function Player.setLeg 0
 push argument 0
@@ -47,6 +56,46 @@ push constant 32
 call Math.multiply 2
 push argument 1
 add
+return
+function Player.hitMonster 0
+push argument 0
+pop pointer 0
+push this 0
+push this 6
+call Monster.getX 1
+push constant 1
+add
+gt
+push this 0
+push this 6
+call Monster.getX 1
+push constant 4
+add
+lt
+and
+push this 1
+push this 6
+call Monster.getY 1
+push constant 10
+add
+gt
+and
+push this 1
+push this 6
+call Monster.getY 1
+push constant 60
+add
+lt
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 5
+push constant 1
+sub
+pop this 5
+label IF_FALSE0
+push constant 0
 return
 function Player.moveDown 0
 push argument 0

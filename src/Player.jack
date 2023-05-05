@@ -4,15 +4,19 @@ class Player {
     field int y;
     field PlayerSprites playerSprites;
     field boolean leg;                    //true - Right
-	field int location;
+		field int location;
+		field int lifes;
+		field Monster monster;
 
-    constructor Player new (){
+    constructor Player new (Monster newMonster){
         let x = 1;
         let y = 3;
         let location = location(x, y);
         let leg = true;                   //standingRight
         let playerSprites = PlayerSprites.new();
         do playerSprites.draw_MOVE_DOWN_STANDING(location);
+        let lifes = 3;
+				let monster = newMonster;
         return this;
     }
 
@@ -23,6 +27,10 @@ class Player {
     method int getY(){
         return y;
     }
+		
+    method int getLifes(){
+				return lifes;
+		}
 
     method void setLeg(boolean newLeg) {
         let leg = newLeg;
@@ -32,6 +40,13 @@ class Player {
     method int location(int x, int y){
         return Math.multiply(y, 32) + x;
     }
+
+		method void hitMonster() {
+				if( (x > (monster.getX() + 1)) & (x < (monster.getX() + 4)) & (y > (monster.getY() + 10)) & (y < (monster.getY() + 60)) ) {
+						let lifes = lifes - 1;
+				}
+				return;
+		}
 
     method void moveDown () {
         if((y + 48) < 255){
