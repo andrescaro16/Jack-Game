@@ -9,8 +9,8 @@ class Bullet{
    field Monster monster;
 
    constructor Bullet new (Monster newMonster){
-      let x = 5;
-      let y = 5;
+      let x = 10;
+      let y = 10;
       let direction = 1;      //(0, up) (1, right) (2, down) (3, left) 
       let counterBullets = 0;
       let crashed = false;
@@ -40,12 +40,13 @@ class Bullet{
    
    // Crashed with the walls validation
    method void getCrashed(){
-      if((x < 5) | (x > 505) | (y < 5) | (y > 250)){
+      if((x < 5) | (x > 505) | (y < 6) | (y > 250)){
          let crashed = true;
       }
       if( (x > (monster.getX() + 10)) & (x < (monster.getX() + 30)) & (y > (monster.getY() + 10)) & (y < (monster.getY() + 30)) ){
          let crashed = true;
       }
+			return;
    }
 
 
@@ -57,7 +58,7 @@ class Bullet{
       if(direction = 0){
          let y = y - 2;
       } else {
-         if(direction = 2){
+         if(direction = 1){
             let x = x + 2;
          } else {
             if(direction = 2){
@@ -68,7 +69,7 @@ class Bullet{
          }
       }
       do getCrashed();
-      if(crashed = true){
+      if((crashed) = (true)){
          do erase();
       }
       // Draw
