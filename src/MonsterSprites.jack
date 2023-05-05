@@ -388,7 +388,7 @@ class MonsterSprites{
 		do Memory.poke(memAddress+448, 0);
 		do Memory.poke(memAddress+480, 0);
 		do Memory.poke(memAddress+512, 0);
-		do Memory.poke(memAddress+544, -3276);
+		do Memory.poke(memAddress+544, -16384);
 		do Memory.poke(memAddress+576, -16384);
 		do Memory.poke(memAddress+608, 16384);
 		do Memory.poke(memAddress+640, 24576);

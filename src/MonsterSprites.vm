@@ -2311,7 +2311,7 @@ pop temp 0
 push local 0
 push constant 544
 add
-push constant 3276
+push constant 16384
 neg
 call Memory.poke 2
 pop temp 0
