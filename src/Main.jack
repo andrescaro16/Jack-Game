@@ -29,6 +29,7 @@ class Main {
         var char key;
         var int delayCharacters;
         var int delayBullets;
+        var int delayMonster;
         var boolean legFlag;
 
         // Class initialisations
@@ -37,6 +38,7 @@ class Main {
 				let bullet = Bullet.new(monster);
         let delayCharacters = 0;
         let delayBullets = 0;
+        let delayMonster = 0;
 				let dir = 0;
 
         // Variables initialisation
@@ -44,7 +46,6 @@ class Main {
         let exit = false;
 
         // Start the monster
-        do monster.init();
 
 
         // Game loop
@@ -61,6 +62,13 @@ class Main {
 								let delayBullets = delayBullets + 1;
 						}	
             
+
+            if(delayMonster = 700){
+                do monster.init();
+                let delayMonster = 0;
+            }
+            let delayMonster = delayMonster + 1;
+
 
             if(delayCharacters = 1000){
 

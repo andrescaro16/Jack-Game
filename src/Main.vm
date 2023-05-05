@@ -42,7 +42,7 @@ call Bullet.init 4
 pop temp 0
 push constant 0
 return
-function Main.main 5
+function Main.main 6
 call Player.new 0
 pop static 0
 call Monster.new 0
@@ -55,14 +55,13 @@ pop local 2
 push constant 0
 pop local 3
 push constant 0
+pop local 4
+push constant 0
 pop static 3
 push constant 0
 pop local 1
 push constant 0
 pop local 0
-push static 1
-call Monster.init 1
-pop temp 0
 label WHILE_EXP0
 push local 0
 not
@@ -96,23 +95,39 @@ push constant 1
 add
 pop local 3
 label IF_FALSE0
-push local 2
-push constant 1000
+push local 4
+push constant 700
 eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
-push local 1
-push constant 131
+push static 1
+call Monster.init 1
+pop temp 0
+push constant 0
+pop local 4
+label IF_FALSE2
+push local 4
+push constant 1
+add
+pop local 4
+push local 2
+push constant 1000
 eq
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
-push local 4
+push local 1
+push constant 131
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 5
 not
-pop local 4
+pop local 5
 push static 0
-push local 4
+push local 5
 call Player.setLeg 2
 pop temp 0
 push static 0
@@ -120,18 +135,18 @@ call Player.moveUp 1
 pop temp 0
 push constant 0
 pop static 3
-label IF_FALSE3
+label IF_FALSE4
 push local 1
 push constant 133
 eq
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
-push local 4
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 5
 not
-pop local 4
+pop local 5
 push static 0
-push local 4
+push local 5
 call Player.setLeg 2
 pop temp 0
 push static 0
@@ -139,32 +154,9 @@ call Player.moveDown 1
 pop temp 0
 push constant 2
 pop static 3
-label IF_FALSE4
-push local 1
-push constant 132
-eq
-if-goto IF_TRUE5
-goto IF_FALSE5
-label IF_TRUE5
-push constant 20
-push constant 100
-call Math.multiply 2
-pop temp 0
-push local 4
-not
-pop local 4
-push static 0
-push local 4
-call Player.setLeg 2
-pop temp 0
-push static 0
-call Player.moveRigth 1
-pop temp 0
-push constant 1
-pop static 3
 label IF_FALSE5
 push local 1
-push constant 130
+push constant 132
 eq
 if-goto IF_TRUE6
 goto IF_FALSE6
@@ -173,11 +165,34 @@ push constant 20
 push constant 100
 call Math.multiply 2
 pop temp 0
-push local 4
+push local 5
 not
-pop local 4
+pop local 5
 push static 0
-push local 4
+push local 5
+call Player.setLeg 2
+pop temp 0
+push static 0
+call Player.moveRigth 1
+pop temp 0
+push constant 1
+pop static 3
+label IF_FALSE6
+push local 1
+push constant 130
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push constant 20
+push constant 100
+call Math.multiply 2
+pop temp 0
+push local 5
+not
+pop local 5
+push static 0
+push local 5
 call Player.setLeg 2
 pop temp 0
 push static 0
@@ -185,39 +200,39 @@ call Player.moveLeft 1
 pop temp 0
 push constant 3
 pop static 3
-label IF_FALSE6
-push local 1
-push constant 32
-eq
-if-goto IF_TRUE7
-goto IF_FALSE7
-label IF_TRUE7
-call Main.fire 0
-pop temp 0
 label IF_FALSE7
 push local 1
-push constant 0
+push constant 32
 eq
 if-goto IF_TRUE8
 goto IF_FALSE8
 label IF_TRUE8
-push static 0
-call Player.stand 1
+call Main.fire 0
 pop temp 0
 label IF_FALSE8
 push local 1
-push constant 27
+push constant 0
 eq
 if-goto IF_TRUE9
 goto IF_FALSE9
 label IF_TRUE9
+push static 0
+call Player.stand 1
+pop temp 0
+label IF_FALSE9
+push local 1
+push constant 27
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
 push constant 0
 not
 pop local 0
-label IF_FALSE9
+label IF_FALSE10
 push constant 0
 pop local 2
-label IF_FALSE2
+label IF_FALSE3
 push local 2
 push constant 1
 add

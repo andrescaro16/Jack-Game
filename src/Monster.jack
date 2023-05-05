@@ -4,14 +4,17 @@ class Monster {
     field int y;
     field MonsterSprites monsterSprites;
     field boolean direction;                      //true - Right
+    field boolean back;
+    field int way;
 	field int location;
     field int lives;
 
     constructor Monster new (){
         let lives = 10;
-        let x = 16;
-        let y = 16;
+        let x = 22;                               //right 22 - left 1
+        let y = 90;                               //down 160 - up 20 - center 90
         let location = location(x, y);
+        let back = false;
         let direction = false;                     //left
         let monsterSprites = MonsterSprites.new();
         do monsterSprites.draw_MOVE_LEFT(location);
@@ -98,8 +101,28 @@ class Monster {
         return;
     }
 
+    method void attack(){
+        if( ~(back) ){
+            if(x = 1){
+                let back = true;
+            } else {
+                do moveLeft();
+            }
+        } else {
+            if(x = 22){
+                let back = false;
+            } else {
+                do moveRigth();
+            }
+        }
+        return;
+    }
+
     method void init(){
-        //code
+        let way = 3;
+        if(way = 3){
+            do attack();
+        }
         return;
     }
 
