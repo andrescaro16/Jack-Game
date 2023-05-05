@@ -146,9 +146,31 @@ class Monster {
         return;
     }
 
+    method void goDown(){
+        if( ~(verticalReady) & ~(backY) ){
+            if(y = 160){
+                let verticalReady = true;
+            } else {
+                do moveDown();
+            }
+        }
+        return;
+    }
+
+    method void goDownBack(){
+        if( ~(verticalReady) & (backY) ){
+            if(y = 90){
+                let backY = false;
+            } else {
+                do moveUp();
+            }
+        }
+        return;
+    }
+
     method void init(){
-        let way = 0;
-        if(way = 0){
+        let way = 2;
+        if(way = 0){                                // Up
             do goUp();
             if((verticalReady) = true){
                 let verticalReady = false;
@@ -156,15 +178,30 @@ class Monster {
             }
             do goUpBack();
         }
-        if(way = 2){
+        if(way = 1){                                // Down
+            do goDown();
+            if((verticalReady) = true){
+                let verticalReady = false;
+                let backY = true;
+            }
+            do goDownBack();
+        }
+        if(way = 2){                                // Up and attack
             do goUp();
             if((verticalReady) = true){
                 do attack();
             }
             do goUpBack();
         }
-        if(way = 3){
+        if(way = 3){                                // Center and attack
             do attack();
+        }
+        if(way = 4){                                // Down and attack
+            do goDown();
+            if((verticalReady) = true){
+                do attack();
+            }
+            do goDownBack();
         }
         return;
     }
