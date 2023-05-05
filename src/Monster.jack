@@ -4,7 +4,9 @@ class Monster {
     field int y;
     field MonsterSprites monsterSprites;
     field boolean direction;                      //true - Right
-    field boolean back;
+    field boolean backX;
+    field boolean backY;
+    field boolean verticalReady;
     field int way;
 	field int location;
     field int lives;
@@ -14,7 +16,9 @@ class Monster {
         let x = 22;                               //right 22 - left 1
         let y = 90;                               //down 160 - up 20 - center 90
         let location = location(x, y);
-        let back = false;
+        let backX = false;
+        let backY = false;
+        let verticalReady = false;
         let direction = false;                     //left
         let monsterSprites = MonsterSprites.new();
         do monsterSprites.draw_MOVE_LEFT(location);
@@ -102,15 +106,17 @@ class Monster {
     }
 
     method void attack(){
-        if( ~(back) ){
+        if( ~(backX) ){
             if(x = 1){
-                let back = true;
+                let backX = true;
             } else {
                 do moveLeft();
             }
         } else {
             if(x = 22){
-                let back = false;
+                let backX = false;
+                let backY = true;
+                let verticalReady = false;
             } else {
                 do moveRigth();
             }
@@ -118,8 +124,45 @@ class Monster {
         return;
     }
 
+    method void goUp(){
+        if( ~(verticalReady) & ~(backY) ){
+            if(y = 20){
+                let verticalReady = true;
+            } else {
+                do moveUp();
+            }
+        }
+        return;
+    }
+
+    method void goUpBack(){
+        if( ~(verticalReady) & (backY) ){
+            if(y = 90){
+                let backY = false;
+            } else {
+                do moveDown();
+            }
+        }
+        return;
+    }
+
     method void init(){
-        let way = 3;
+        let way = 0;
+        if(way = 0){
+            do goUp();
+            if((verticalReady) = true){
+                let verticalReady = false;
+                let backY = true;
+            }
+            do goUpBack();
+        }
+        if(way = 2){
+            do goUp();
+            if((verticalReady) = true){
+                do attack();
+            }
+            do goUpBack();
+        }
         if(way = 3){
             do attack();
         }

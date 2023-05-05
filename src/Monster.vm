@@ -1,9 +1,9 @@
 function Monster.new 0
-push constant 8
+push constant 10
 call Memory.alloc 1
 pop pointer 0
 push constant 10
-pop this 7
+pop this 9
 push constant 22
 pop this 0
 push constant 90
@@ -12,15 +12,19 @@ push pointer 0
 push this 0
 push this 1
 call Monster.location 3
-pop this 6
+pop this 8
 push constant 0
 pop this 4
+push constant 0
+pop this 5
+push constant 0
+pop this 6
 push constant 0
 pop this 3
 call MonsterSprites.new 0
 pop this 2
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_MOVE_LEFT 2
 pop temp 0
 push pointer 0
@@ -66,9 +70,9 @@ push pointer 0
 push this 0
 push this 1
 call Monster.location 3
-pop this 6
+pop this 8
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_ERASE 2
 pop temp 0
 push this 1
@@ -79,19 +83,19 @@ push pointer 0
 push this 0
 push this 1
 call Monster.location 3
-pop this 6
+pop this 8
 push this 3
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_MOVE_RIGHT 2
 pop temp 0
 goto IF_END1
 label IF_FALSE1
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_MOVE_LEFT 2
 pop temp 0
 label IF_END1
@@ -111,9 +115,9 @@ push pointer 0
 push this 0
 push this 1
 call Monster.location 3
-pop this 6
+pop this 8
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_ERASE 2
 pop temp 0
 push this 1
@@ -124,19 +128,19 @@ push pointer 0
 push this 0
 push this 1
 call Monster.location 3
-pop this 6
+pop this 8
 push this 3
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_MOVE_RIGHT 2
 pop temp 0
 goto IF_END1
 label IF_FALSE1
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_MOVE_LEFT 2
 pop temp 0
 label IF_END1
@@ -156,9 +160,9 @@ push pointer 0
 push this 0
 push this 1
 call Monster.location 3
-pop this 6
+pop this 8
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_ERASE 2
 pop temp 0
 push this 0
@@ -169,14 +173,14 @@ push pointer 0
 push this 0
 push this 1
 call Monster.location 3
-pop this 6
+pop this 8
 push pointer 0
 push constant 0
 not
 call Monster.setDirection 2
 pop temp 0
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_MOVE_RIGHT 2
 pop temp 0
 label IF_FALSE0
@@ -195,9 +199,9 @@ push pointer 0
 push this 0
 push this 1
 call Monster.location 3
-pop this 6
+pop this 8
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_ERASE 2
 pop temp 0
 push this 0
@@ -208,19 +212,19 @@ push pointer 0
 push this 0
 push this 1
 call Monster.location 3
-pop this 6
+pop this 8
 push pointer 0
 push constant 0
 call Monster.setDirection 2
 pop temp 0
 push this 2
-push this 6
+push this 8
 call MonsterSprites.draw_MOVE_LEFT 2
 pop temp 0
 label IF_FALSE0
 push constant 0
 return
-function Monster.atack 0
+function Monster.attack 0
 push argument 0
 pop pointer 0
 push this 4
@@ -253,6 +257,11 @@ goto IF_FALSE2
 label IF_TRUE2
 push constant 0
 pop this 4
+push constant 0
+not
+pop this 5
+push constant 0
+pop this 6
 goto IF_END2
 label IF_FALSE2
 push pointer 0
@@ -262,21 +271,127 @@ label IF_END2
 label IF_END0
 push constant 0
 return
+function Monster.goUp 0
+push argument 0
+pop pointer 0
+push this 6
+not
+push this 5
+not
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+push constant 20
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+pop this 6
+goto IF_END1
+label IF_FALSE1
+push pointer 0
+call Monster.moveUp 1
+pop temp 0
+label IF_END1
+label IF_FALSE0
+push constant 0
+return
+function Monster.goUpBack 0
+push argument 0
+pop pointer 0
+push this 6
+not
+push this 5
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+push constant 90
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+pop this 5
+goto IF_END1
+label IF_FALSE1
+push pointer 0
+call Monster.moveDown 1
+pop temp 0
+label IF_END1
+label IF_FALSE0
+push constant 0
+return
 function Monster.init 0
 push argument 0
 pop pointer 0
-push constant 3
-pop this 5
-push this 5
-push constant 3
+push constant 0
+pop this 7
+push this 7
+push constant 0
 eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push pointer 0
-call Monster.atack 1
+call Monster.goUp 1
+pop temp 0
+push this 6
+push constant 0
+not
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+pop this 6
+push constant 0
+not
+pop this 5
+label IF_FALSE1
+push pointer 0
+call Monster.goUpBack 1
 pop temp 0
 label IF_FALSE0
+push this 7
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+call Monster.goUp 1
+pop temp 0
+push this 6
+push constant 0
+not
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push pointer 0
+call Monster.attack 1
+pop temp 0
+label IF_FALSE3
+push pointer 0
+call Monster.goUpBack 1
+pop temp 0
+label IF_FALSE2
+push this 7
+push constant 3
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push pointer 0
+call Monster.attack 1
+pop temp 0
+label IF_FALSE4
 push constant 0
 return
 function Monster.dispose 0

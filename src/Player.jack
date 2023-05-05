@@ -41,12 +41,12 @@ class Player {
         return Math.multiply(y, 32) + x;
     }
 
-		method void hitMonster() {
-				if( (x > (monster.getX() + 1)) & (x < (monster.getX() + 4)) & (y > (monster.getY() + 10)) & (y < (monster.getY() + 60)) ) {
-						let lifes = lifes - 1;
-				}
-				return;
-		}
+    method void hitMonster() {
+        if( (x > (monster.getX() + 1)) & (x < (monster.getX() + 4)) & (y > (monster.getY() + 10)) & (y < (monster.getY() + 60)) ) {
+            let lifes = lifes - 1;
+        }
+        return;
+    }
 
     method void moveDown () {
         if((y + 48) < 255){
