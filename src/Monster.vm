@@ -13,6 +13,8 @@ push this 0
 push this 1
 call Monster.location 3
 pop this 8
+push constant 4
+pop this 7
 push constant 0
 pop this 4
 push constant 0
@@ -166,7 +168,7 @@ push this 8
 call MonsterSprites.draw_ERASE 2
 pop temp 0
 push this 0
-push constant 1
+push constant 3
 add
 pop this 0
 push pointer 0
@@ -205,7 +207,7 @@ push this 8
 call MonsterSprites.draw_ERASE 2
 pop temp 0
 push this 0
-push constant 1
+push constant 3
 sub
 pop this 0
 push pointer 0
@@ -318,6 +320,10 @@ goto IF_FALSE1
 label IF_TRUE1
 push constant 0
 pop this 5
+push constant 0
+push constant 4
+call LCGRandom.randRange 2
+pop this 7
 goto IF_END1
 label IF_FALSE1
 push pointer 0
@@ -374,6 +380,10 @@ goto IF_FALSE1
 label IF_TRUE1
 push constant 0
 pop this 5
+push constant 0
+push constant 4
+call LCGRandom.randRange 2
+pop this 7
 goto IF_END1
 label IF_FALSE1
 push pointer 0
@@ -386,8 +396,6 @@ return
 function Monster.init 0
 push argument 0
 pop pointer 0
-push constant 2
-pop this 7
 push this 7
 push constant 0
 eq
@@ -473,13 +481,24 @@ label IF_TRUE6
 push pointer 0
 call Monster.attack 1
 pop temp 0
-label IF_FALSE6
-push this 7
-push constant 4
+push this 0
+push constant 22
 eq
 if-goto IF_TRUE7
 goto IF_FALSE7
 label IF_TRUE7
+push constant 0
+push constant 4
+call LCGRandom.randRange 2
+pop this 7
+label IF_FALSE7
+label IF_FALSE6
+push this 7
+push constant 4
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
 push pointer 0
 call Monster.goDown 1
 pop temp 0
@@ -487,17 +506,17 @@ push this 6
 push constant 0
 not
 eq
-if-goto IF_TRUE8
-goto IF_FALSE8
-label IF_TRUE8
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
 push pointer 0
 call Monster.attack 1
 pop temp 0
-label IF_FALSE8
+label IF_FALSE9
 push pointer 0
 call Monster.goDownBack 1
 pop temp 0
-label IF_FALSE7
+label IF_FALSE8
 push constant 0
 return
 function Monster.dispose 0

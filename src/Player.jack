@@ -4,19 +4,19 @@ class Player {
     field int y;
     field PlayerSprites playerSprites;
     field boolean leg;                    //true - Right
-		field int location;
-		field int lifes;
-		field Monster monster;
+    field int location;
+    field int lifes;
+    field Monster monster;
 
     constructor Player new (Monster newMonster){
-        let x = 1;
-        let y = 3;
+        let x = 5;
+        let y = 110;
         let location = location(x, y);
         let leg = true;                   //standingRight
         let playerSprites = PlayerSprites.new();
         do playerSprites.draw_MOVE_DOWN_STANDING(location);
         let lifes = 3;
-				let monster = newMonster;
+		let monster = newMonster;
         return this;
     }
 
@@ -29,8 +29,8 @@ class Player {
     }
 		
     method int getLifes(){
-				return lifes;
-		}
+		return lifes;
+	}
 
     method void setLeg(boolean newLeg) {
         let leg = newLeg;
@@ -53,9 +53,9 @@ class Player {
             // Erase
             let location = location(x, y);
             do playerSprites.draw_ERASE(location);            // Update position
-            let y = y + 10;
+            let y = y + 20;
             // Draw
-						let location = location(x, y);
+			let location = location(x, y);
             if(~leg){
                 do playerSprites.draw_MOVE_DOWN_LEFT_LEG(location);
             }else{
@@ -66,12 +66,12 @@ class Player {
     }
 
     method void moveUp () {
-        if(y > 5){
+        if((y - 20) > 5){
             // Erase
             let location = location(x, y);
             do playerSprites.draw_ERASE(location);
             // Update position
-            let y = y - 10;
+            let y = y - 20;
             // Draw
             let location = location(x, y);
             if(~leg){
@@ -100,9 +100,9 @@ class Player {
             // Erase
             let location = location(x, y);
             do playerSprites.draw_ERASE(location);            // Update position
-            let x = x + 1;
+            let x = x + 2;
             // Draw
-						let location = location(x, y);
+			let location = location(x, y);
             if(~leg){
                 do playerSprites.draw_MOVE_RIGHT_LEFT_LEG(location);
                 do playerSprites.draw_MOVE_RIGHT_MID(location);
@@ -119,7 +119,7 @@ class Player {
             // Erase
             let location = location(x, y);
             do playerSprites.draw_ERASE(location);            // Update position
-            let x = x - 1;
+            let x = x - 2;
             // Draw
             let location = location(x, y);
             if(~leg){
