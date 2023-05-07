@@ -31,6 +31,7 @@ class Main {
         var int delayBullets;
         var int delayMonster;
         var boolean legFlag;
+        var int numSeed;
 
         // Class initialisations
         let monster = Monster.new();
@@ -40,12 +41,11 @@ class Main {
         let delayBullets = 0;
         let delayMonster = 0;
 				let dir = 0;
+        let numSeed = 0;
 
         // Variables initialisation
         let key = 0;
         let exit = false;
-
-        // Start the monster
 
 
         // Game loop
@@ -59,9 +59,16 @@ class Main {
 										let delayBullets = 0;
 								}
 								let delayBullets = delayBullets + 1;
-						}	
-            
+						}
 
+            // The random seed to choose the random way of the monster
+            do LCGRandom.setSeed(numSeed);
+            let numSeed = numSeed + 1001;
+            if((numSeed = 32000) | (numSeed > 32000) ){
+              let numSeed = 0;
+            }
+            
+            // Call the update method to move the monster but with delay
             if(delayMonster = 700){
                 do monster.init();
                 let delayMonster = 0;
@@ -77,6 +84,7 @@ class Main {
 									do isaac.moveUp();
 									do isaac.hitMonster();
 									let dir = 0;
+                  let numSeed = numSeed + 10;
 								}     //up
                 if(key = 133){ 
 								  let legFlag = ~(legFlag);
@@ -84,6 +92,7 @@ class Main {
 									do isaac.moveDown(); 
 									do isaac.hitMonster();
 									let dir = 2;
+                  let numSeed = numSeed + 3000;
 								}   //down
                 if(key = 132){ 
 									do Math.multiply(20,100);
@@ -92,6 +101,7 @@ class Main {
 									do isaac.moveRigth(); 
 									do isaac.hitMonster();
 									let dir = 1;
+                  let numSeed = numSeed + 801;
 								}  //right
                 if(key = 130){ 
 									do Math.multiply(20,100);
@@ -100,6 +110,7 @@ class Main {
 									do isaac.moveLeft(); 
 									do isaac.hitMonster();
 									let dir = 3;
+                  let numSeed = numSeed + 444;
 								}   //left
                 if(key = 32){
                   do Main.fire();

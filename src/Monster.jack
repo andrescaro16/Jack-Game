@@ -17,6 +17,7 @@ class Monster {
         let x = 22;                               //right 22 - left 1
         let y = 90;                               //down 160 - up 20 - center 90
         let location = location(x, y);
+        let way = 4;
         let backX = false;
         let backY = false;
         let verticalReady = false;
@@ -100,7 +101,7 @@ class Monster {
             // Erase
             let location = location(x, y);
             do monsterSprites.draw_ERASE(location);            // Update position
-            let x = x + 1;
+            let x = x + 3;
             // Draw
 			let location = location(x, y);
             do setDirection(true);
@@ -114,7 +115,7 @@ class Monster {
             // Erase
             let location = location(x, y);
             do monsterSprites.draw_ERASE(location);            // Update position
-            let x = x - 1;
+            let x = x - 3;
             // Draw
             let location = location(x, y);
             do setDirection(false);
@@ -157,6 +158,7 @@ class Monster {
         if( ~(verticalReady) & (backY) ){
             if(y = 90){
                 let backY = false;
+                let way = LCGRandom.randRange(0, 4);
             } else {
                 do moveDown();
             }
@@ -179,6 +181,7 @@ class Monster {
         if( ~(verticalReady) & (backY) ){
             if(y = 90){
                 let backY = false;
+                let way = LCGRandom.randRange(0, 4);
             } else {
                 do moveUp();
             }
@@ -217,6 +220,9 @@ class Monster {
         }
         if(way = 3){                                // Center and attack
             do attack();
+            if(x = 22){
+                let way = LCGRandom.randRange(0, 4);
+            }
         }
         if(way = 4){                                // Down and attack
             do goDown();
