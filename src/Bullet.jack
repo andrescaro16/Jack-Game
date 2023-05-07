@@ -25,6 +25,10 @@ class Bullet{
 
 
    method void draw() {
+			do getCrashed();
+      if((crashed) = (true)){
+				 return;
+      }
       do Screen.setColor(true);
       do Screen.drawCircle(x, y, 4);
       return;
@@ -32,6 +36,10 @@ class Bullet{
 
 
    method void erase(){
+      do getCrashed();
+      if((crashed) = (true)){
+				 return;
+      }
       do Screen.setColor(false);
       do Screen.drawCircle(x, y, 4);
       return;
@@ -40,13 +48,15 @@ class Bullet{
    
    // Crashed with the walls validation
    method void getCrashed(){
-      if((x < 5) | (x > 500) | (y < 10) | (y > 240)){
+      if((x < 10) | (x > 500) | (y < 10) | (y > 240)){
          let crashed = true;
+				 return;
       }
       if( (x > (Math.multiply(monster.getX(),16) + 5)) & (x < (Math.multiply(monster.getX(), 16) + 60)) & (y > (monster.getY() + 5)) & (y < (monster.getY() + 60)) ){	
          let crashed = true;
 				 do monster.takeDamage();
 				 do monster.lifeCheck();
+				 return;
       }
 			return;
    }
@@ -55,24 +65,24 @@ class Bullet{
    // Move the bullet
    method void update() {
       // Erase
-      do erase();
       // Direction validations
+			do getCrashed();
+      if((crashed) = (true)){
+				 return;
+      }
+      do erase();
       if(direction = 0){
-         let y = y - 6;
+         let y = y - 10;
       } else {
          if(direction = 1){
-            let x = x + 6;
+            let x = x + 10;
          } else {
             if(direction = 2){
-               let y = y + 6;
+               let y = y + 10;
             } else {
-               let x = x - 6;
+               let x = x - 10;
             }
          }
-      }
-      do getCrashed();
-      if((crashed) = (true)){
-         do erase();
       }
       // Draw
       do draw();
