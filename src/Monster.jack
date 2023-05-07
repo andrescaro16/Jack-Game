@@ -13,7 +13,7 @@ class Monster {
     field int lifes;
 
     constructor Monster new (){
-        let lifes = 10;
+        let lifes = 5;
         let x = 22;                               //right 22 - left 1
         let y = 90;                               //down 160 - up 20 - center 90
         let location = location(x, y);
@@ -22,6 +22,7 @@ class Monster {
         let backY = false;
         let verticalReady = false;
         let death = false;
+        let way = 2;                               //right 22 - left 1
         let direction = false;                     //left
         let monsterSprites = MonsterSprites.new();
         do monsterSprites.draw_MOVE_LEFT(location);
@@ -36,7 +37,7 @@ class Monster {
         return y;
     }
 		
-		method boolean getState() {
+		method boolean isDeath() {
 				return death;
 		}
 
@@ -60,6 +61,35 @@ class Monster {
     method int location(int x, int y){
         return Math.multiply(y, 32) + x;
     }
+
+		method void die() {
+				var int count;
+				var int delay;
+				let count = 0;
+				let delay = 45;
+				let location = location(x, y);
+				do monsterSprites.draw_ERASE(location);
+				while (~(count = delay)) {
+						// code to be executed repeatedly
+						do monsterSprites.die_three(location);
+						let count = count + 1;
+				}
+				let count = 0;
+				do monsterSprites.draw_ERASE(location);
+				while (~(count = delay)) {
+						// code to be executed repeatedly
+						do monsterSprites.die_two(location);
+						let count = count + 1;
+				}
+				let count = 0;
+				do monsterSprites.draw_ERASE(location);
+				while (~(count = delay)) {
+						// code to be executed repeatedly
+						do monsterSprites.die_one(location);
+						let count = count + 1;
+				}
+				return;
+		}
 
     method void moveDown () {
         if((y + 48) < 255){
@@ -190,8 +220,7 @@ class Monster {
     }
 
     method void init(){
-        let way = 2;
-				if (death = 0) {
+				if (death) {
 						do die();
 						return;
 				}
