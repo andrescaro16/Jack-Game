@@ -57,6 +57,87 @@ call Math.multiply 2
 push argument 1
 add
 return
+function Player.die 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 100
+pop local 1
+push pointer 0
+push this 0
+push this 1
+call Player.location 3
+pop this 4
+push this 2
+push this 4
+call PlayerSprites.draw_ERASE 2
+pop temp 0
+label WHILE_EXP0
+push local 0
+push local 1
+eq
+not
+not
+if-goto WHILE_END0
+push this 2
+push this 4
+call PlayerSprites.die_one 2
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+pop local 0
+push this 2
+push this 4
+call PlayerSprites.draw_ERASE 2
+pop temp 0
+label WHILE_EXP1
+push local 0
+push local 1
+eq
+not
+not
+if-goto WHILE_END1
+push this 2
+push this 4
+call PlayerSprites.die_two 2
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+pop local 0
+push this 2
+push this 4
+call PlayerSprites.draw_ERASE 2
+pop temp 0
+label WHILE_EXP2
+push local 0
+push constant 1000
+eq
+not
+not
+if-goto WHILE_END2
+push this 2
+push this 4
+call PlayerSprites.die_three 2
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP2
+label WHILE_END2
+push constant 0
+return
 function Player.hitMonster 0
 push argument 0
 pop pointer 0
@@ -83,7 +164,7 @@ and
 push this 1
 push this 6
 call Monster.getY 1
-push constant 60
+push constant 65
 add
 lt
 and
@@ -128,7 +209,7 @@ push constant 20
 add
 push this 6
 call Monster.getY 1
-push constant 60
+push constant 65
 add
 lt
 and

@@ -40,13 +40,42 @@ class Player {
     method int location(int x, int y){
         return Math.multiply(y, 32) + x;
     }
+		
+		method void die() {
+				var int count;
+				var int delay;
+				let count = 0;
+				let delay = 100;
+				let location = location(x, y);
+				do playerSprites.draw_ERASE(location);
+				while (~(count = delay)) {
+						// code to be executed repeatedly
+						do playerSprites.die_one(location);
+						let count = count + 1;
+				}
+				let count = 0;
+				do playerSprites.draw_ERASE(location);
+				while (~(count = delay)) {
+						// code to be executed repeatedly
+						do playerSprites.die_two(location);
+						let count = count + 1;
+				}
+				let count = 0;
+				do playerSprites.draw_ERASE(location);
+				while (~(count = 1000)) {
+						// code to be executed repeatedly
+						do playerSprites.die_three(location);
+						let count = count + 1;
+				}
+				return;
+		}
 
     method void hitMonster() {
-        if( (x > (monster.getX() + 1)) & (x < (monster.getX() + 4)) & (y > (monster.getY() + 10)) & (y < (monster.getY() + 60)) ) {
+        if( (x > (monster.getX() + 1)) & (x < (monster.getX() + 4)) & (y > (monster.getY() + 10)) & (y < (monster.getY() + 65)) ) {
             let lifes = lifes - 1;
 						return;
         }
-        if( (x+1 > (monster.getX() + 1)) & (x+1 < (monster.getX() + 4)) & (y+20 > (monster.getY() + 10)) & (y+20 < (monster.getY() + 60)) ) {
+        if( (x+1 > (monster.getX() + 1)) & (x+1 < (monster.getX() + 4)) & (y+20 > (monster.getY() + 10)) & (y+20 < (monster.getY() + 65)) ) {
             let lifes = lifes - 1;
 						return;
         }
